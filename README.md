@@ -13,7 +13,7 @@ Use of these functions require two EMG data files/filepaths:
 
 All EMG data should be pre-filtered and normalized to maximum contraction values prior to storing in .pkl files.
 
-Additionally, these functions were designed for use on two experimental cohorts, individuals with and without rotator cuff tears. For individuals with rotator cuff tears, the Supraspinatus muscle (all components) has been removed from the OpenSim model. Therefore, the 'save_combined_activations' function requires definitions of which data belongs to which cohort. This is done using a 'bool' value, where True = tear, and False = no tear. If cohort = None, it will assume the Supraspinatus is present.
+Additionally, these functions were designed for use on two experimental cohorts, individuals with and without rotator cuff tears. For individuals with rotator cuff tears, the Supraspinatus muscle (all components) was removed from the OpenSim model. Therefore, the 'save_combined_activations' function requires definitions of which data belongs to which cohort. This is done using a 'bool' value, where True = tear, and False = no tear. If cohort = None, it will assume the Supraspinatus is present.
 
 ## Example usage
 To see an example of how these functions are used within the Joint Reactions Analyses pipeline, see 'JRA_Batch.py' within my opensim-py repository (https://github.com/smbarron/opensim-py).
