@@ -4,15 +4,15 @@ import pandas as pd
 
 def combine_files(states_file_path):
     states_df = load_states_file(states_file_path)
-    
-    activation_file_path = states_file_path.replace('StatesReporter_states', 'StaticOptimization_activation')
+
+    activation_file_path = states_file_path.replace("StatesReporter_states", "StaticOptimization_activation")
     activation_df = load_activation_file(activation_file_path)
-    
-    output_filename = states_file_path.replace('StatesReporter_states', 'CombinedFile')
-    
+
+    output_filename = states_file_path.replace("StatesReporter_states", "CombinedFile")
+
     combined_df = merge_files(activation_df, states_df)
     save_combined_file(combined_df, output_filename)
-    
+
     return output_filename
 
 
@@ -29,7 +29,7 @@ def merge_files(activation_df, states_df):
     states_columns_to_replace = [f"/forceset/{col}/activation" for col in activation_columns]
 
     combined_df = states_df.copy()
-    
+
     for act_col, state_col in zip(activation_columns, states_columns_to_replace):
         if state_col in combined_df.columns:
             combined_df[state_col] = activation_df[act_col]
@@ -53,6 +53,3 @@ def save_combined_file(df, filename):
         f.write("endheader\n")
 
     df.to_csv(filename, mode="a", sep="\t", index=False, float_format="%.8f")
-
-
-
